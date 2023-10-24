@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Forms;
 using System.Windows.Data;
 
 using Dragablz;
@@ -10,6 +9,7 @@ using System.Windows.Shell;
 using System.Globalization;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Dependencies
 {

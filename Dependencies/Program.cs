@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Diagnostics;
 
-using NDesk.Options;
 using Newtonsoft.Json;
 using Dependencies.ClrPh;
 using Mono.Cecil;
+using NDesk.Options;
 
 namespace Dependencies
 {

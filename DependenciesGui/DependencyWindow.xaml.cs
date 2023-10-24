@@ -7,10 +7,10 @@ using System.ComponentModel;
 using System.Windows.Input;
 using System.Diagnostics;
 using System.Windows.Data;
-using Microsoft.Win32;
 
 using Mono.Cecil;
 using Dependencies.ClrPh;
+using Microsoft.Win32;
 
 namespace Dependencies
 {

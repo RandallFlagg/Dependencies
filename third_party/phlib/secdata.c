@@ -29,7 +29,7 @@
 
 #define ACCESS_ENTRIES(Type) static PH_ACCESS_ENTRY Ph##Type##AccessEntries[] =
 #define ACCESS_ENTRY(Type, HasSynchronize) \
-    { L#Type, Ph##Type##AccessEntries, sizeof(Ph##Type##AccessEntries), HasSynchronize }
+    { L""#Type, Ph##Type##AccessEntries, sizeof(Ph##Type##AccessEntries), HasSynchronize }
 
 typedef struct _PH_SPECIFIC_TYPE
 {
@@ -566,6 +566,7 @@ ACCESS_ENTRIES(WmiGuid)
 
 static PH_SPECIFIC_TYPE PhSpecificTypes[] =
 {
+    
     ACCESS_ENTRY(AlpcPort, TRUE),
     ACCESS_ENTRY(DebugObject, TRUE),
     ACCESS_ENTRY(Desktop, FALSE),
@@ -609,6 +610,7 @@ static PH_SPECIFIC_TYPE PhSpecificTypes[] =
     ACCESS_ENTRY(Type, FALSE),
     ACCESS_ENTRY(WindowStation, FALSE),
     ACCESS_ENTRY(WmiGuid, TRUE)
+
 };
 
 /**

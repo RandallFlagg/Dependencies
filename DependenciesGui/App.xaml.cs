@@ -138,7 +138,7 @@ namespace Dependencies
             JumpTask item = new JumpTask();
             item.Title = System.IO.Path.GetFileName(Filename);
             item.Description = Filename;
-            item.ApplicationPath = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            item.ApplicationPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             item.Arguments = Filename;
             item.CustomCategory = "Tasks";
             
