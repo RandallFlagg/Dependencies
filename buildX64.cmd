@@ -1,0 +1,1 @@
+msbuild Dependencies.sln /t:build /p:Configuration=Debug /p:Platform="x64"
