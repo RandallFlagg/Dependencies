@@ -83,9 +83,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ClrPhlib\ClrPhlib.vcxproj">
-      <Project>{fc5ffcaf-982f-4a95-8fa6-2a95b1f7cdc8}</Project>
-      <Name>ClrPhlib</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\DependenciesLib\DependenciesLib.csproj" />
   </ItemGroup>
 </Project>

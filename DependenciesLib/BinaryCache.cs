@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
-using Dependencies.ClrPh;
 using System.ComponentModel;
+using Dependencies.ClrPhlibCS;
+using System.Linq;
 
 namespace Dependencies
 {
-   
+
     /// <summary>
     /// Application wide PE cache on disk. This is used to solve the issue of phlib mapping
     /// analyzed binaries in memory and thus locking those in the filesystem (https://github.com/lucasg/Dependencies/issues/9).
@@ -66,7 +67,7 @@ namespace Dependencies
         ///     return null if the file is not found
         ///     return PE.LoadSuccessful == false if the file exists but it's not a valid PE file
         /// </returns>
-        public static PE LoadPe(string PePath)
+        public static ClrPhlibCS.PE LoadPe(string PePath)
         {
             return Instance.GetBinary(PePath);
         }
@@ -141,8 +142,8 @@ namespace Dependencies
             // Strip the .dll extension and search for matching targets
             var ImportDllWIthoutExtension = Path.GetFileNameWithoutExtension(ImportDllName);
             var Targets = ApiSetmapCache.Lookup(ImportDllWIthoutExtension);
-            if ((Targets != null) && (Targets.Count > 0))
-                return Targets[0];
+            if ((Targets != null) && (Targets.Count() > 0))
+                return Targets[0].ToString();
 
             return "";
         }
@@ -403,7 +404,7 @@ namespace Dependencies
         {
             //Debug.WriteLine(String.Format("Attempt to load : {0:s}", PePath), "BinaryCache");
 
-            if (!NativeFile.Exists(PePath))
+            if (!File.Exists(PePath))
             {
                 Debug.WriteLine(String.Format("File not present on the filesystem : {0:s} ", PePath), "BinaryCache");
                 return null;
@@ -435,7 +436,7 @@ namespace Dependencies
                     if (!File.Exists(DestFilePath) && (DestFilePath != PePath))
                     {
                         // Debug.WriteLine(String.Format("FileCopy from {0:s} to {1:s}", PePath, DestFilePath), "BinaryCache");
-                        NativeFile.Copy(PePath, DestFilePath);
+                        File.Copy(PePath, DestFilePath);
                     }
 
                     PE NewShadowBinary = new PE(DestFilePath);
@@ -483,6 +484,8 @@ namespace Dependencies
 
         private string BinaryCacheFolderPath;
         private int MaxBinaryCount;
+
+        
 
         #endregion Members
     }

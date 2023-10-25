@@ -4,8 +4,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 using System.Text.RegularExpressions;
-
-using Dependencies.ClrPh;
+using Dependencies.ClrPhlibCS;
 
 namespace Dependencies
 {

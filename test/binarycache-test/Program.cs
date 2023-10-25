@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 
-using Dependencies.ClrPh;
 using NDesk.Options;
+using Dependencies.ClrPhlibCS;
 
 namespace Dependencies
 {

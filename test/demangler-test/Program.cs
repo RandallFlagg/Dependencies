@@ -6,7 +6,9 @@ using System.Threading;
 using System.Diagnostics;
 
 using NDesk.Options;
-using Dependencies.ClrPh;
+using Dependencies.ClrPhlibCS;
+using System.IO;
+using static System.Net.WebRequestMethods;
 
 namespace Dependencies
 {
@@ -83,6 +85,7 @@ namespace Dependencies
                 Debug.Assert(SymPrv.UndecorateName("?what@exception@@UEBAPEBDXZ").Item2 == "public: virtual char const * __ptr64 __cdecl exception::what(void)const __ptr64");
                 Debug.Assert(SymPrv.UndecorateName("?_Execute_once@std@@YAHAEAUonce_flag@1@P6AHPEAX1PEAPEAX@Z1@Z").Item2 == "int __cdecl std::_Execute_once(struct std::once_flag & __ptr64,int (__cdecl*)(void * __ptr64,void * __ptr64,void * __ptr64 * __ptr64),void * __ptr64)");
                 Debug.Assert(SymPrv.UndecorateName("?swap@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@IEAAXAEAV12@@Z").Item2 == "protected: void __cdecl std::basic_streambuf<wchar_t,struct std::char_traits<wchar_t> >::swap(class std::basic_streambuf<wchar_t,struct std::char_traits<wchar_t> > & __ptr64) __ptr64");
+                Debug.Assert(SymPrv.UndecorateName("St6vectorIiSaIiEE").Item2 == "std::vector<int, std::allocator<int>>");
 
                 Console.WriteLine("demangler-test : all known inputs OK");
                 return true;
@@ -169,7 +172,7 @@ namespace Dependencies
                         demangler = new Demangler(demangler_name);
                         string Filepath = args[1];
 
-                        if (NativeFile.Exists(Filepath))
+                        if (System.IO.File.Exists(Filepath))
                         {
                             TestFilepath(Filepath, demangler);
                         }

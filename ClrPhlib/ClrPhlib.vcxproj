@@ -256,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="ClrPhlib.cpp" />
     <ClCompile Include="src\managed\NativeFile.cpp" />
     <ClCompile Include="src\managed\PE.cpp" />
     <ClCompile Include="src\managed\PeExport.cpp" />
@@ -278,6 +277,11 @@
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="ClrPhlib.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClrPhlibCS\ClrPhlibCS.csproj">
+      <Project>{f1f9db63-7822-4f20-851e-e89b38a44b7c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,8 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
-
-using Dependencies.ClrPh;
+using Dependencies.ClrPhlibCS;
 
 namespace Dependencies
 {

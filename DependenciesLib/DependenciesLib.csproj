@@ -49,15 +49,22 @@
   </PropertyGroup>
    
   <ItemGroup>
+    <Compile Include="ClrPhlibCS\ApiSetSchema.cs" />
     <Compile Include="BinaryCache.cs" />
+    <Compile Include="ClrPhlibCS\ApiSetTarget.cs" />
+    <Compile Include="ClrPhlibCS\ClrPhlib.cs" />
+    <Compile Include="ClrPhlibCS\CLRPH_DEMANGLER.cs" />
+    <Compile Include="ClrPhlibCS\PhSymbolProvider.cs" />
     <Compile Include="FindPeModule.cs" />
+    <Compile Include="ClrPhlibCS\PeImport.cs" />
+    <Compile Include="ClrPhlibCS\PeImportDll.cs" />
+    <Compile Include="ClrPhlibCS\NativeFile.cs" />
+    <Compile Include="PeExport.cs" />
     <Compile Include="SxsManifest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+   
   <ItemGroup>
-    <ProjectReference Include="..\ClrPhlib\ClrPhlib.vcxproj">
-      <Project>{fc5ffcaf-982f-4a95-8fa6-2a95b1f7cdc8}</Project>
-      <Name>ClrPhlib</Name>
-    </ProjectReference>
+    <Compile Include="ClrPhlibCS\PE.cs" />
   </ItemGroup>
 </Project>

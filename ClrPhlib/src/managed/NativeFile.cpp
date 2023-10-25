@@ -7,8 +7,9 @@
 using namespace Dependencies;
 using namespace ClrPh;
 using namespace System::Text;
+using namespace ClrPhlibCS;
 
-static bool isCurrentProcessWow64 = CLRPH_ARCH::WOW64 == Phlib::GetClrPhArch();
+static bool isCurrentProcessWow64 = (int)CLRPH_ARCH::WOW64 == (int)Dependencies2::ClrPh::Phlib::GetClrPhArch();
 static PVOID FsRedirectionValue = NULL;
 #define WITH_WOW64_FS_REDIRECTION_DISABLED(action) do { \
     DisableWow64FsRedirection(); \
