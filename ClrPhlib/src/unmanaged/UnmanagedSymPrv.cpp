@@ -94,7 +94,7 @@ VOID PvpLoadDbgHelpFromPath(
         {
             if (indexOfFileName != 0)
             {
-                static PH_STRINGREF symsrvString = PH_STRINGREF_INIT(L"\\symsrv.dll");
+                static PH_STRINGREF symsrvString = PH_STRINGREF_INIT((PWCH)L"\\symsrv.dll");
 
                 dbghelpFolder.Buffer = fullDbghelpPath->Buffer;
                 dbghelpFolder.Length = indexOfFileName * sizeof(WCHAR);
@@ -123,7 +123,7 @@ BOOLEAN PvpLoadDbgHelp(
     _Inout_ PPH_SYMBOL_PROVIDER *SymbolProvider
 )
 {
-    static UNICODE_STRING symbolPathVarName = RTL_CONSTANT_STRING(L"_NT_SYMBOL_PATH");
+    static UNICODE_STRING symbolPathVarName = RTL_CONSTANT_STRING((PWCH)L"_NT_SYMBOL_PATH");
     PPH_STRING symbolSearchPath;
     PPH_SYMBOL_PROVIDER symbolProvider;
     WCHAR buffer[MAX_PATH] = L"";
@@ -147,11 +147,11 @@ BOOLEAN PvpLoadDbgHelp(
     // Load symbol path from _NT_SYMBOL_PATH if configured by the user.    
     if (NT_SUCCESS(RtlQueryEnvironmentVariable_U(NULL, &symbolPathVarName, &symbolPathUs)))
     {
-        symbolSearchPath = PhFormatString(L"SRV*%s*http://msdl.microsoft.com/download/symbols", symbolPathUs.Buffer);
+        symbolSearchPath = PhFormatString((PWSTR)L"SRV*%s*http://msdl.microsoft.com/download/symbols", symbolPathUs.Buffer);
     }
     else
     {
-        symbolSearchPath = PhCreateString(L"SRV**http://msdl.microsoft.com/download/symbols");
+        symbolSearchPath = PhCreateString((PWSTR)L"SRV**http://msdl.microsoft.com/download/symbols");
     }
 
     PhSetSearchPathSymbolProvider(symbolProvider, symbolSearchPath->Buffer);

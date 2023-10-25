@@ -40,7 +40,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FC5FFCAF-982F-4A95-8FA6-2A95B1F7CDC8}</ProjectGuid>
-		<TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>ClrPhlib</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -206,6 +206,8 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeaderFile />
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -224,6 +226,8 @@
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <PrecompiledHeaderFile />
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -243,6 +247,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -259,6 +265,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeaderFile />
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -275,6 +283,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -290,6 +300,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeaderFile />
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -306,6 +318,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -322,6 +336,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -338,6 +354,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(OutputPath)\phlib.lib;$(OutputPath)\demumble.lib;$(OutputPath)\llvm-demangle.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -380,7 +398,8 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <!-- Workaround to enable self contained publishing -->
-  <Target Name="_CheckForLanguageAndFeatureCombinationSupport"></Target>
+  <Target Name="_CheckForLanguageAndFeatureCombinationSupport">
+  </Target>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>

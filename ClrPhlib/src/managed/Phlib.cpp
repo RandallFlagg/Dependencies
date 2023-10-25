@@ -36,7 +36,7 @@ BOOLEAN NTAPI PhEnumDirectoryObjectsCallback(
     _In_opt_ PVOID Context
 )
 {
-	static PH_STRINGREF SectionTypeName = PH_STRINGREF_INIT(L"Section");
+	static PH_STRINGREF SectionTypeName = PH_STRINGREF_INIT((PWCH)L"Section");
 	List<String^>^ ReturnList = ((List<String^>^*) Context)[0];
 
 	if (!PhCompareStringRef(&SectionTypeName, TypeName, TRUE)) {
@@ -55,7 +55,7 @@ List<String^>^ BuildKnownDllList(_In_ bool Wow64Dlls)
 	UNICODE_STRING name;
 	NTSTATUS status;
 	
-	const PWCHAR KnownDllObjectName = (Wow64Dlls) ? (Phlib::GetClrPhArch() == CLRPH_ARCH::ARM64 ? L"\\KnownDllsChpe32" : L"\\KnownDlls32") : L"\\KnownDlls";
+	const PWCHAR KnownDllObjectName = (Wow64Dlls) ? (Phlib::GetClrPhArch() == CLRPH_ARCH::ARM64 ? (PWCHAR)L"\\KnownDllsChpe32" : (PWCHAR)L"\\KnownDlls32") : (PWCHAR)L"\\KnownDlls";
 
 	name.Length = (USHORT) wcslen(KnownDllObjectName) * sizeof(wchar_t);
 	name.MaximumLength = (USHORT) wcslen(KnownDllObjectName) * sizeof(wchar_t);
