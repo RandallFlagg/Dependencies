@@ -1,0 +1,127 @@
+﻿<Page
+    x:Class="Dependencies.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Dependencies"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+	
+	<Page.Resources>
+		<Style x:Name="RecentMenuItemStyle" TargetType="MenuFlyoutItem" BasedOn="{StaticResource DefaultMenuFlyoutItemStyle}">
+			<Setter Property="Padding" Value="{StaticResource MenuFlyoutItemThemePaddingNarrow}"/>
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+
+	</Page.Resources>
+
+	<Grid AllowDrop="True" Background="Transparent" DragEnter="RootGrid_DragEnter" Drop="RootGridOrFileTabs_Drop">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<CommandBar Grid.Row="0" DefaultLabelPosition="Right" HorizontalAlignment="Left">
+			<AppBarElementContainer>
+				<SplitButton x:Name="FileOpenButton" Style="{ThemeResource SplitButtonCommandBarStyle}" Click="OpenItem_Click" AccessKey="O">
+					<StackPanel Orientation="Horizontal">
+						<Viewbox x:Name="ContentViewbox"
+                                Height="{ThemeResource AppBarButtonContentHeight}"
+                                HorizontalAlignment="Stretch"
+                                AutomationProperties.AccessibilityView="Raw" >
+							<SymbolIcon Symbol="OpenFile"/>
+						</Viewbox>
+						<TextBlock x:Name="TextLabel"
+                                FontSize="12"
+                                TextAlignment="Center"
+                                TextWrapping="Wrap"
+                                Margin="8,0,0,0"
+                                AutomationProperties.AccessibilityView="Raw"
+								   Text="Open"/>
+					</StackPanel>
+					<SplitButton.Flyout>
+						<MenuFlyout x:Name="RecentItemsFlyout"/>
+					</SplitButton.Flyout>
+					<SplitButton.KeyboardAccelerators>
+						<KeyboardAccelerator Modifiers="Control" Key="O"/>
+					</SplitButton.KeyboardAccelerators>
+				</SplitButton>
+			</AppBarElementContainer>
+			<AppBarButton Icon="View" Label="View" AccessKey="V">
+				<AppBarButton.Flyout>
+					<MenuFlyout Placement="Bottom">
+						<ToggleMenuFlyoutItem AccessKey="F" Text="Full Paths" IsChecked="{x:Bind FullPathSetting, Mode=TwoWay}">
+							<ToggleMenuFlyoutItem.KeyboardAccelerators>
+								<KeyboardAccelerator Modifiers="None" Key="F9"/>
+							</ToggleMenuFlyoutItem.KeyboardAccelerators>
+						</ToggleMenuFlyoutItem>
+						<ToggleMenuFlyoutItem AccessKey="U" Text="Undecorate C++ Functions" IsChecked="{x:Bind UndecorateSetting, Mode=TwoWay }">
+							<ToggleMenuFlyoutItem.KeyboardAccelerators>
+								<KeyboardAccelerator Modifiers="None" Key="F10"/>
+							</ToggleMenuFlyoutItem.KeyboardAccelerators>
+						</ToggleMenuFlyoutItem>
+						<MenuFlyoutSeparator/>
+						<MenuFlyoutItem x:Name="RefreshItem" AccessKey="R" Text="Refresh" IsEnabled="False" Click="RefreshItem_Click">
+							<MenuFlyoutItem.KeyboardAccelerators>
+								<KeyboardAccelerator Modifiers="None" Key="F5"/>
+							</MenuFlyoutItem.KeyboardAccelerators>
+						</MenuFlyoutItem>
+						<MenuFlyoutSeparator/>
+						<ToggleMenuFlyoutItem AccessKey="S" Text="Status Bar" IsChecked="{x:Bind ShowStatusBarSetting, Mode=TwoWay }"/>
+					</MenuFlyout>
+				</AppBarButton.Flyout>
+			</AppBarButton>
+			<AppBarButton x:Name="CustomizeSearchFoldersItem" Icon="Find" Label="Customize search folders" AccessKey="C" IsEnabled="True" Click="CustomizeSearchFolderItem_Click"/>
+			<CommandBar.SecondaryCommands>
+				<AppBarButton Icon="Setting" Label="Properties" AccessKey="P" Click="UserSettingsItem_Click"/>
+				<AppBarButton Icon="Help" Label="About Dependencies" AccessKey="H" Click="AboutItem_Click"/>
+			</CommandBar.SecondaryCommands>
+		</CommandBar>
+
+		<Grid Grid.Row="1" Background="{ThemeResource ControlAltFillColorQuarternary}" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0"/>
+
+		<TabView x:Name="FileTabs" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsAddTabButtonVisible="False" CanReorderTabs="True" CanDragTabs="True" AllowDropTabs="True" Padding="4,4,0,0" 
+				 TabCloseRequested="FileTabs_TabCloseRequested" TabItemsChanged="FileTabs_TabItemsChanged" TabDragStarting="FileTabs_TabDragStarting" TabDragCompleted="FileTabs_TabDragCompleted" TabStripDragOver="FileTabs_TabStripDragOver" TabStripDrop="RootGridOrFileTabs_Drop"/>
+
+
+		<Grid   Name="DefaultMessage"
+                Grid.Row="1" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+              >
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="48"/>
+				<ColumnDefinition Width="auto"/>
+			</Grid.ColumnDefinitions>
+
+			<Image Source="Assets/Square44x44Logo.png" Height="48" Width="48" Grid.Column="0"/>
+
+
+
+			<TextBlock Grid.Column="2" 
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Center"
+                       Name="TextContent"
+                       FontSize="18"
+                       Margin="20 0 0 00"
+                       >
+                Analyze a new binary via "Open" (Ctrl+O) <LineBreak/>
+                or simply by dragging it into the application.
+			</TextBlock>
+		</Grid>
+
+		<InfoBar x:Name="AppStatusBar" 
+                   HorizontalContentAlignment="Stretch" 
+                   VerticalContentAlignment="Bottom" 
+                   Grid.Row="2" 
+                   MinHeight="20" 
+                   Margin="0" 
+                   VerticalAlignment="Bottom" IsClosable="False" Height="24" IsIconVisible="False" CornerRadius="0" BorderThickness="0,1,0,0" Background="{ThemeResource LayerFillColorDefaultBrush}"
+				   Visibility="{x:Bind ShowStatusBarSetting, Mode=OneWay}"
+				   IsOpen="True">
+			<InfoBar.Message>
+				"Welcome to Dependencies !"
+			</InfoBar.Message>
+		</InfoBar>
+	</Grid>
+</Page>

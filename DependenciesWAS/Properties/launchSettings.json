@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "DependenciesWAS (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DependenciesWAS (Unpackaged)": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}
